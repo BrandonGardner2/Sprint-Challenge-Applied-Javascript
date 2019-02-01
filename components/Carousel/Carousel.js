@@ -5,18 +5,30 @@ class Carousel {
     this.rightBtn = carousel.querySelector(".right-button");
     this.imgs = carousel.querySelectorAll("img");
     this.currentIndex = 0;
-
+    this.imgs[0].style.display = "block";
     this.leftBtn.addEventListener("click", () => this.leftClick());
     this.rightBtn.addEventListener("click", () => this.rightClick());
   }
 
-  leftClick() {}
+  leftClick() {
+    this.imgs[this.currentIndex].style.display = "none";
+    if (this.currentIndex === 0) {
+      this.currentIndex = this.imgs.length - 1;
+    } else {
+      this.currentIndex -= 1;
+    }
+    this.imgs[this.currentIndex].style.display = "block";
+  }
 
-  rightClick() {}
-
-  fadeIn() {}
-
-  fadeOut() {}
+  rightClick() {
+    this.imgs[this.currentIndex].style.display = "none";
+    if (this.currentIndex === 3) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex += 1;
+    }
+    this.imgs[this.currentIndex].style.display = "block";
+  }
 }
 
 let carousel = document.querySelectorAll(".carousel");
